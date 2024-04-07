@@ -55,6 +55,9 @@ public class Solution026 {
 
     /**
      * 双指针，用来交换和计数
+     * k表示有效数字的下标
+     * j从1开始遍历，j与k相同即继续遍历下一个
+     * j与k不同，就将j与k+1进行交换
      */
     public static int removeDuplicates0(int[] nums) {
         int k = 0;
