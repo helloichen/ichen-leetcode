@@ -11,8 +11,9 @@ import java.util.Stack;
 public class Solution025 {
 
     public static void main(String[] args) {
-        ListNode l1 = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
-        reverseKGroup0(l1, 3);
+//         ListNode l1 = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
+        ListNode l1 = new ListNode(1, new ListNode(2));
+        reverseKGroup0(l1, 2);
     }
 
     /**
@@ -28,7 +29,7 @@ public class Solution025 {
             ListNode temp = head;
             for (int i = 0; i < k; i++) {
                 stack.push(head);
-                if (head.next == null) {
+                if (i != k - 1 && head.next == null) {
                     tail = temp;
                     break out;
                 }
@@ -40,9 +41,16 @@ public class Solution025 {
                 cur = cur.next;
             }
         }
-        if (tail != null) {
-            cur.next = tail;
-        }
+        // 如果tail = null，表示末尾没有剩余
+        // 但是反转之后的最后节点可能不是原最后一个节点
+        // 即此时最后一个节点的next还有值
+        // 将null赋值给next即可
+        // 如果tail != null，表示末尾有剩余的没有反转
+        // 此时最后节点还是原最后节点
+        // 即此时最后节点next没有值
+        // 直接将tail赋值给next即可
+        cur.next = tail;
+
         return result.next;
     }
 
