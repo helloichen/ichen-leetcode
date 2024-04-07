@@ -9,6 +9,7 @@ class Solution005 {
     /**
      * 遍历所有子串，挨个判断是否是回文。找到的第一个，就是最长的
      * 回文串的问题网上有好多算法，有个动态规划和马拉车算法好像比较厉害
+     * 超出时间限制 时间复杂度太大
      */
     public String longestPalindrome(String str) {
         if (str.length() <= 1) {
